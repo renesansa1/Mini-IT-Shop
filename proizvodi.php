@@ -32,10 +32,10 @@ require 'check_if_added.php';
         </div>
         <div class="container">
             <?php
-                //kolumne
-                $numOfCols = 4;
-                $rowCount = 0;
-                $bootstrapColWidth = 12 / $numOfCols;
+                //kolone
+                $broj_kolona = 4;
+                $broj_redova = 0;
+                $bootstrapColWidth = 12 / $broj_kolona;
             ?>
             <div class="row">
                 <?php
@@ -67,8 +67,8 @@ require 'check_if_added.php';
                     </div>
                 </div>
                 <?php
-                $rowCount++;
-                if($rowCount % $numOfCols == 0) echo '</div><div class="row">';
+                $broj_redova++;
+                if($broj_redova % $broj_kolona == 0) echo '</div><div class="row">';
 				}
 			?>
             </div>

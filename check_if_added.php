@@ -1,5 +1,4 @@
 <?php
-    
     function check_if_added_to_korpa($proizvod_id){
         //session_start();    
         require 'connection.php';

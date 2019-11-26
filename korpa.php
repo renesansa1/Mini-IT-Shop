@@ -1,19 +1,19 @@
 <?php
     session_start();
     require 'connection.php';
-    if(!isset($_SESSION['email'])){
+    if (!isset($_SESSION['email'])) {
         header('location: login.php');
     }
-    $user_id=$_SESSION['id'];
-    $user_proizvod_query="select proizvodi.id, proizvodi.ime_proizvoda, proizvodi.cena from korisnicka_korpa inner join proizvodi on proizvodi.id = korisnicka_korpa.proizvod_id where korisnicka_korpa.user_id = '$user_id'";
-    $user_proizvod_result=mysqli_query($con,$user_proizvod_query) or die(mysqli_error($con));
-    $broj_kor_proiz= mysqli_num_rows($user_proizvod_result);
-    $sum=0;
-    
-        while($row=mysqli_fetch_array($user_proizvod_result)){
-            $sum=$sum+$row['cena']; 
-       }
-    
+    $user_id = $_SESSION['id'];
+    $user_proizvod_query = "select proizvodi.id, proizvodi.ime_proizvoda, proizvodi.cena from korisnicka_korpa inner join proizvodi on proizvodi.id = korisnicka_korpa.proizvod_id where korisnicka_korpa.user_id = '$user_id'";
+    $user_proizvod_result = mysqli_query($con, $user_proizvod_query) or die(mysqli_error($con));
+    $broj_kor_proiz = mysqli_num_rows($user_proizvod_result);
+    $sum = 0;
+
+    while ($row = mysqli_fetch_array($user_proizvod_result)) {
+        $sum = $sum + $row['cena'];
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,9 +35,9 @@
 
 <body>
     <div>
-        <?php 
-               require 'header.php';
-            ?>
+        <?php
+            require 'header.php';
+        ?>
         <br>
         <div class="container">
             <table class="table table-bordered table-striped">
@@ -48,36 +48,36 @@
                         <th>Cena</th>
                         <th></th>
                     </tr>
-                    <?php 
-                        $user_proizvod_result=mysqli_query($con,$user_proizvod_query) or die(mysqli_error($con));
-                        $broj_kor_proiz= mysqli_num_rows($user_proizvod_result);
-                        $brojac=1;
-                       while($row=mysqli_fetch_array($user_proizvod_result)){
-                           
-                         ?>
+                    <?php
+                    $user_proizvod_result = mysqli_query($con, $user_proizvod_query) or die(mysqli_error($con));
+                    $broj_kor_proiz = mysqli_num_rows($user_proizvod_result);
+                    $brojac = 1;
+                    while ($row = mysqli_fetch_array($user_proizvod_result)) {
+
+                        ?>
                     <tr>
                         <th><?php echo $brojac ?></th>
-                        <th><?php echo $row['ime_proizvoda']?></th>
-                        <th><?php echo $row['cena']?></th>
+                        <th><?php echo $row['ime_proizvoda'] ?></th>
+                        <th><?php echo $row['cena'] ?></th>
                         <th><a href='korpa_remove.php?id=<?php echo $row['id'] ?>'>Izbaci</a></th>
                     </tr>
-                    <?php $brojac=$brojac+1;
-                }?>
+                    <?php $brojac = $brojac + 1;
+                    } ?>
                     <tr>
                         <th></th>
                         <th>Ukupno</th>
-                        <th><?php echo $sum;?></th>
-                        <th><a <?php if($sum == 0){
-        echo "<p style='color:black;'>Nema proizvoda u korpi.<a href='proizvodi.php'> Vrati se</a> ako želiš neki proizvod.</p>";
-        } else {
-            ?> href="uspesno_kup.php?id=<?php echo $user_id?>"
+                        <th><?php echo $sum; ?></th>
+                        <th><a <?php if ($sum == 0) {
+                                    echo "<p style='color:black;'>Nema proizvoda u korpi.<a href='proizvodi.php'> Vrati se</a> ako želiš neki proizvod.</p>";
+                                } else {
+                                    ?> href="uspesno_kup.php?id=<?php echo $user_id ?>"
                                 class="btn btn-primary">Potvrdite kupovinu</a></th><?php } ?>
                     </tr>
                 </tbody>
             </table>
         </div>
         <?php
-        require 'footer.php';
+            require 'footer.php';
         ?>
     </div>
 </body>

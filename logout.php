@@ -22,8 +22,8 @@
 <body>
     <div>
         <?php
-                require 'header.php';
-            ?>
+            require 'header.php';
+        ?>
         <br>
         <div class="container">
             <div class="row">
@@ -38,7 +38,7 @@
             </div>
         </div>
         <?php
-        require 'footer.php';
+            require 'footer.php';
         ?>
     </div>
 </body>

@@ -1,12 +1,12 @@
 <?php
     session_start();
     require 'connection.php';
-    if(!isset($_SESSION['email'])){
+    if (!isset($_SESSION['email'])) {
         header('location:index.php');
-    }else{
-        $user_id=$_GET['id'];
-        $confirm_query="update korisnicka_korpa set status='Kupljeno' where user_id=$user_id";
-        $confirm_query_result=mysqli_query($con,$confirm_query) or die(mysqli_error($con));
+    } else {
+        $user_id = $_GET['id'];
+        $confirm_query = "update korisnicka_korpa set status='Kupljeno' where user_id=$user_id";
+        $confirm_query_result = mysqli_query($con, $confirm_query) or die(mysqli_error($con));
     }
     //unset($_SESSION['id']);
 ?>
@@ -29,8 +29,8 @@
 <body>
     <div>
         <?php
-                require 'header.php';
-            ?>
+            require 'header.php';
+        ?>
         <br>
         <div class="container">
             <div class="row">
@@ -46,7 +46,7 @@
             </div>
         </div>
         <?php
-        require 'footer.php';
+            require 'footer.php';
         ?>
     </div>
 </body>

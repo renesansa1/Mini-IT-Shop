@@ -1,7 +1,7 @@
 <?php
-session_start();
-require "connection.php";
-require 'check_if_added.php';
+    session_start();
+    require "connection.php";
+    require 'check_if_added.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,18 +22,18 @@ require 'check_if_added.php';
 <body>
     <div>
         <?php
-        require 'header.php';
+            require 'header.php';
         ?>
         <div class="container">
             <?php
-        
-           while($fetch = $query->fetch_array()){
-           $id_p = $_GET['proid'];
-                if($fetch["id"] == $id_p){
-                ?>
+
+            while ($fetch = $query->fetch_array()) {
+                $id_p = $_GET['proid'];
+                if ($fetch["id"] == $id_p) {
+                    ?>
             <div class="col-md-6 col-sm-8">
                 <div class="thumbnail">
-                    <img src="img/kom<?php echo $fetch["id"]?>.jpg">
+                    <img src="img/kom<?php echo $fetch["id"] ?>.jpg">
                     </a>
                     <div class="caption center">
                         <h3><?php echo $fetch["ime_proizvoda"]; ?></h3>
@@ -52,29 +52,29 @@ require 'check_if_added.php';
                     <?php if (!isset($_SESSION['email'])) {  ?>
                     <p><a href="login.php" role="button" class="btn btn-primary btn-block">Kupite</a></p>
                     <?php
-                                    } else {
-                                        if (check_if_added_to_korpa($fetch["id"])) {
-                                            echo '<a href="#" class=btn btn-block btn-success disabled>Ubačeno u korpu</a>';
                                         } else {
-                                            ?>
-                    <a href="korpa_add.php?id=<?php echo $fetch["id"]?>" class="btn btn-block btn-primary" name="add"
+                                            if (check_if_added_to_korpa($fetch["id"])) {
+                                                echo '<a href="#" class=btn btn-block btn-success disabled>Ubačeno u korpu</a>';
+                                            } else {
+                                                ?>
+                    <a href="korpa_add.php?id=<?php echo $fetch["id"] ?>" class="btn btn-block btn-primary" name="add"
                         value="add" class="btn btn-block btr-primary">Ubaci u korpu</a>
                     <?php
+                                        }
                                     }
-                                }
-                                ?>
+                                    ?>
                     <?php
-				}
-			?>
+                            }
+                            ?>
                     <?php
-				}
-			?>
+                    }
+                    ?>
                 </div>
             </div>
 
             <?php
-        require 'footer.php';
-        ?>
+                require 'footer.php';
+            ?>
         </div>
 </body>
 

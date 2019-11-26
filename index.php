@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,8 +20,8 @@ session_start();
 <body>
     <div>
         <?php
-            require 'header.php';
-           ?>
+        require 'header.php';
+        ?>
         <div id="bannerImage">
             <div class="container">
 
@@ -37,9 +37,9 @@ session_start();
             <div class="row">
                 <div class="col-xs-4">
                     <div class="thumbnail center">
-                      
-                            <img src="img/mon.jpg" alt="Slika">
-                       
+
+                        <img src="img/mon.jpg" alt="Slika">
+
 
                         <div class="caption">
                             <p id="autoResize">Monitori</p>
@@ -50,9 +50,9 @@ session_start();
                 </div>
                 <div class="col-xs-4">
                     <div class="thumbnail center">
-                       
-                            <img src="img/kom.jpg" alt="Slika">
-                        
+
+                        <img src="img/kom.jpg" alt="Slika">
+
 
                         <div class="caption">
                             <p id="autoResize">Komponente</p>
@@ -63,9 +63,9 @@ session_start();
                 </div>
                 <div class="col-xs-4">
                     <div class="thumbnail center">
-                        
-                            <img src="img/ulaz.jpg" alt="Slika">
-                        
+
+                        <img src="img/ulaz.jpg" alt="Slika">
+
 
                         <div class="caption">
                             <p id="autoResize">Ulazni uređaji</p>

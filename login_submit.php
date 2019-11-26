@@ -1,8 +1,8 @@
 <?php
     require 'connection.php';
     session_start();
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    $password = mysqli_real_escape_string($con, $_POST['password']);
+    $email = $con->real_escape_string($_POST['email']);
+    $password = $con->real_escape_string($_POST['password']);
     if (strlen($password) < 6) {
         echo "Šifra mora imati najmanje 6 karaktera. Vraćamo vas na login stranu...";
 ?>
@@ -10,7 +10,7 @@
 <?php
     }
     $user_authentication_query = "select id,email from korisnici where email='$email' and password='$password'";
-    $user_authentication_result = mysqli_query($con, $user_authentication_query) or die(mysqli_error($con));
+    $user_authentication_result = $con->query($user_authentication_query) or die($con->error);
     $rows_fetched = mysqli_num_rows($user_authentication_result);
     if ($rows_fetched == 0) {
         //ako nema usera

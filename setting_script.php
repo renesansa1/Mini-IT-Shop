@@ -4,17 +4,17 @@
     if (!isset($_SESSION['email'])) {
         header('location:index.php');
     }
-    $old_password = mysqli_real_escape_string($con, $_POST['stara_sifra']);
-    $new_password = mysqli_real_escape_string($con, $_POST['nova_sifra']);
+    $old_password = $con->real_escape_string($_POST['stara_sifra']);
+    $new_password = $con->real_escape_string($_POST['nova_sifra']);
     $email = $_SESSION['email'];
     //echo $email;
     $password_from_database_query = "select password from korisnici where email='$email'";
-    $password_from_database_result = mysqli_query($con, $password_from_database_query) or die(mysqli_error($con));
+    $password_from_database_result = $con->query($password_from_database_query) or die($con->error);
     $row = mysqli_fetch_array($password_from_database_result);
     //echo $row['password'];
     if ($row['password'] == $old_password) {
         $update_password_query = "update korisnici set password='$new_password' where email='$email'";
-        $update_password_result = mysqli_query($con, $update_password_query) or die(mysqli_error($con));
+        $update_password_result = $con->query($update_password_query) or die($con->error);
         echo "Vaša šifra je promenjena.";
 ?>
 <meta http-equiv="refresh" content="3;url=proizvodi.php" />

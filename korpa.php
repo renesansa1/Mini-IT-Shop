@@ -2,15 +2,15 @@
     session_start();
     require 'connection.php';
     if (!isset($_SESSION['email'])) {
-        header('location: login.php');
+        header('location: login_forma.php');
     }
     $user_id = $_SESSION['id'];
     $user_proizvod_query = "select proizvodi.id, proizvodi.ime_proizvoda, proizvodi.cena from korisnicka_korpa inner join proizvodi on proizvodi.id = korisnicka_korpa.proizvod_id where korisnicka_korpa.user_id = '$user_id'";
-    $user_proizvod_result = $con->query($user_proizvod_query) or die($con->error);
-    $broj_kor_proiz = mysqli_num_rows($user_proizvod_result);
+    $user_proizvod = $con->query($user_proizvod_query) or die($con->error);
+    $broj_kor_proiz = mysqli_num_rows($user_proizvod);
     $sum = 0;
 
-    while ($row = mysqli_fetch_array($user_proizvod_result)) {
+    while ($row = mysqli_fetch_array($user_proizvod)) {
         $sum = $sum + $row['cena'];
     }
 
@@ -49,17 +49,17 @@
                         <th></th>
                     </tr>
                     <?php
-                    $user_proizvod_result = $con->query($user_proizvod_query) or die($con->error);
-                    $broj_kor_proiz = mysqli_num_rows($user_proizvod_result);
+                    $user_proizvod = $con->query($user_proizvod_query) or die($con->error);
+                    $broj_kor_proiz = mysqli_num_rows($user_proizvod);
                     $brojac = 1;
-                    while ($row = mysqli_fetch_array($user_proizvod_result)) {
+                    while ($row = mysqli_fetch_array($user_proizvod)) {
 
                         ?>
                     <tr>
                         <th><?php echo $brojac ?></th>
                         <th><?php echo $row['ime_proizvoda'] ?></th>
                         <th><?php echo $row['cena'] ?></th>
-                        <th><a href='korpa_remove.php?id=<?php echo $row['id'] ?>'>Izbaci</a></th>
+                        <th><a href='korpa_obrisi.php?id=<?php echo $row['id'] ?>'>Izbaci</a></th>
                     </tr>
                     <?php $brojac = $brojac + 1;
                     } ?>

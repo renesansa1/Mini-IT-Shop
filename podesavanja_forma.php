@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-xs-4 col-xs-offset-4">
                     <h1>Promeni Šifru</h1>
-                    <form method="post" action="setting_script.php">
+                    <form method="post" action="podesavanja.php">
                         <div class="form-group">
                             <input type="password" class="form-control" name="stara_sifra" placeholder="Stara Šifra">
                         </div>

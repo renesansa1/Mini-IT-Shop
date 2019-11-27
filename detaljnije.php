@@ -1,7 +1,7 @@
 <?php
     session_start();
     require "connection.php";
-    require 'check_if_added.php';
+    require 'da_li_je_u_korpi.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,14 +50,14 @@
                 <div class="caption center">
                     <p>Cena: <?php echo number_format($fetch['cena']) ?></p>
                     <?php if (!isset($_SESSION['email'])) {  ?>
-                    <p><a href="login.php" role="button" class="btn btn-primary btn-block">Kupite</a></p>
+                    <p><a href="login_forma.php" role="button" class="btn btn-primary btn-block">Kupite</a></p>
                     <?php
                                         } else {
-                                            if (check_if_added_to_korpa($fetch["id"])) {
+                                            if (da_li_je_u_korpi($fetch["id"])) {
                                                 echo '<a href="#" class=btn btn-block btn-success disabled>Ubačeno u korpu</a>';
                                             } else {
                                                 ?>
-                    <a href="korpa_add.php?id=<?php echo $fetch["id"] ?>" class="btn btn-block btn-primary" name="add"
+                    <a href="korpa_dodaj.php?id=<?php echo $fetch["id"] ?>" class="btn btn-block btn-primary" name="add"
                         value="add" class="btn btn-block btr-primary">Ubaci u korpu</a>
                     <?php
                                         }

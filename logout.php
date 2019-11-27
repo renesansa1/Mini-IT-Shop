@@ -31,7 +31,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading"></div>
                         <div class="panel-body">
-                            <p>Izlogovali ste se. <a href="login.php">Uloguj se ponovo.</a></p>
+                            <p>Izlogovali ste se. <a href="login_forma.php">Uloguj se ponovo.</a></p>
                         </div>
                     </div>
                 </div>

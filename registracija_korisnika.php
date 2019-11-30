@@ -7,28 +7,28 @@
     if (strlen($password) < 6) {
         echo "Šifra mora imati najmanje 6 karaktera. Vraćamo vas na stranu za registraciju...";
 ?>
-<meta http-equiv="refresh" content="2;url=signup.php" />
+<meta http-equiv="refresh" content="2;url=registracija_forma.php" />
 <?php
     }
     $kontakt_telefon = $_POST['kontakt_telefon'];
     $grad = $con->real_escape_string($_POST['grad']);
     $adresa = $con->real_escape_string($_POST['adresa']);
-    $duplicate_user_query = "select id from korisnici where email='$email'";
-    $duplicate_user_result = $con->query($duplicate_user_query) or die($con->error);
-    $rows_fetched = mysqli_num_rows($duplicate_user_result);
-    if ($rows_fetched > 0) {
+    $postojeci_email_query = "select id from korisnici where email='$email'";
+    $postojeci_email = $con->query($postojeci_email_query) or die($con->error);
+    $postojeci_korisnik = mysqli_num_rows($postojeci_email);
+    if ($postojeci_korisnik > 0) {
         //ako već postoji email adresa
-        //header('location: signup.php');
+        //header('location: registracija_forma.php');
     ?>
 <script>
-    window.alert("Email adresa je već koriščena za logovanje!");
+    window.alert("Email adresa je već koriščena za registraciju!");
 </script>
-<meta http-equiv="refresh" content="1;url=signup.php" />
+<meta http-equiv="refresh" content="1;url=registracija_forma.php" />
 <?php
     } else {
-        $user_registration_query = "insert into korisnici(ime,email,password,kontakt_telefon,grad,adresa) values ('$ime','$email','$password','$kontakt_telefon','$grad','$adresa')";
+        $registracija_korisnika_query = "insert into korisnici(ime,email,password,kontakt_telefon,grad,adresa) values ('$ime','$email','$password','$kontakt_telefon','$grad','$adresa')";
 
-        $user_registration_result = $con->query($user_registration_query) or die($con->error);
+        $registracija_korisnika = $con->query($registracija_korisnika_query) or die($con->error);
         echo "Uspešno ste se registrovali";
         $_SESSION['email'] = $email;
         //The $con->insert_id funkcija vraća id (generisana sa AUTO_INCREMENT) korišćena u poslednjem query.

@@ -1,7 +1,7 @@
 <?php
     session_start();
     require "connection.php";
-    require 'check_if_added.php';
+    require 'da_li_je_u_korpi.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,29 +35,29 @@
             //kolone
             $broj_kolona = 4;
             $broj_redova = 0;
-            $bootstrapColWidth = 12 / $broj_kolona;
+            $bootstrap_kolone = 12 / $broj_kolona;
             ?>
             <div class="row">
                 <?php
                 while ($fetch = $query->fetch_array()) {
                     ?>
-                <div class="col-md-<?php echo $bootstrapColWidth; ?> trans">
+                <div class="col-md-<?php echo $bootstrap_kolone; ?> trans">
                     <div class="thumbnail">
                         <a href="detaljnije.php?proid=<?php echo $fetch["id"]; ?>">
-                            <img src="img/kom<?php echo $fetch["id"] ?>.jpg">
+                            <img src="<?php echo $fetch['slika'] ?>">
                         </a>
                         <div class="caption center">
                             <h3><?php echo $fetch['ime_proizvoda'] ?></h3>
                             <p>Cena: <?php echo number_format($fetch['cena']) ?></p>
                             <?php if (!isset($_SESSION['email'])) {  ?>
-                            <p><a href="login.php" role="button" class="btn btn-primary btn-block">Kupite</a></p>
+                            <p><a href="login_forma.php" role="button" class="btn btn-primary btn-block">Kupite</a></p>
                             <?php
                                         } else {
-                                            if (check_if_added_to_korpa($fetch["id"])) {
+                                            if (da_li_je_u_korpi($fetch["id"])) {
                                                 echo '<a href="#" class=btn btn-block btn-success disabled>Ubačeno u korpu</a>';
                                             } else {
                                                 ?>
-                            <a href="korpa_add.php?id=<?php echo $fetch["id"] ?>" class="btn btn-block btn-primary"
+                            <a href="korpa_dodaj.php?id=<?php echo $fetch["id"] ?>" class="btn btn-block btn-primary"
                                 name="add" value="add" class="btn btn-block btr-primary">Ubaci u korpu</a>
                             <?php
                                         }

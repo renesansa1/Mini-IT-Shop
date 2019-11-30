@@ -14,14 +14,15 @@
                 <?php
                 if (isset($_SESSION['email'])) {
                     ?>
+                <li><a href=#><span class="glyphicon"></span>Dobrodošli <?php echo "<b>".$_SESSION['email']."</b>" ?></a></li>
                 <li><a href="korpa.php"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa</a></li>
-                <li><a href="settings.php"><span class="glyphicon glyphicon-cog"></span> Podešavanja</a></li>
+                <li><a href="podesavanja_forma.php"><span class="glyphicon glyphicon-cog"></span> Podešavanja</a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Izloguj se</a></li>
                 <?php
                 } else {
                     ?>
-                <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Registruj se</a></li>
-                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Uloguj se</a></li>
+                <li><a href="registracija_forma.php"><span class="glyphicon glyphicon-user"></span> Registruj se</a></li>
+                <li><a href="login_forma.php"><span class="glyphicon glyphicon-log-in"></span> Uloguj se</a></li>
                 <?php
                 }
                 ?>

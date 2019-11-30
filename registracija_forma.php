@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-xs-4 col-xs-offset-4">
                     <h1><b>Registruj se</b></h1>
-                    <form method="post" action="user_registration.php">
+                    <form method="post" action="registracija_korisnika.php">
                         <div class="form-group">
                             <input type="text" class="form-control" name="ime" placeholder="Ime" required="true">
                         </div>

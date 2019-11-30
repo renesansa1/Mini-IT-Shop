@@ -1,3 +1,6 @@
+body {
+  background-color: whitesmoke;
+}
 .navbar {
   margin-bottom: 0px;
 }
@@ -88,4 +91,45 @@ html {
   -ms-transform: scale(1.5); /* IE 9 */
   -webkit-transform: scale(1.5); /* Safari 3-8 */
   transform: scale(1.1);
+}
+
+h1 {
+  margin-left: 440px;
+}
+table {
+  border-collapse: collapse;
+  width: 1000px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+table th {
+  text-align: center;
+}
+table th,
+td {
+  padding: 5px;
+  border: 1px solid black;
+}
+.insert {
+  margin-top: 25px;
+}
+.forma {
+  width: 1000px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+form label {
+  width: 150px;
+}
+form input {
+  width: 500px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.submit {
+  margin-left: 150px;
 }

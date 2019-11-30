@@ -1,61 +1,37 @@
 <?php
     require 'connection.php';
     session_start();
+    $email = $con->real_escape_string($_POST['email']);
+    $password = $con->real_escape_string($_POST['password']);
+    if (strlen($password) < 6) {
+        echo "Šifra mora imati najmanje 6 karaktera. Vraćamo vas na login stranu...";
 ?>
-<!DOCTYPE html>
-<html>
+<meta http-equiv="refresh" content="2;url=login_forma.php" />
+<?php
+    }
+    $user_potvrda_query = "select id, email, tip from korisnici where email='$email' and password='$password'";
+    $user_potvrda = $con->query($user_potvrda_query) or die($con->error);
+    $broj_usera = mysqli_num_rows($user_potvrda);
+    if ($broj_usera == 0) {
+        //ako nema usera
+        //redirect na istu login stranu
+?>
+<script>
+    window.alert("Pogrešno uneti username ili šifra");
+</script>
+<meta http-equiv="refresh" content="1;url=login_forma.php" />
+<?php
+        //header('location: login_forma.php');
+        //echo "Pogresan email ili sifra.";
+    } else {
+        $row = mysqli_fetch_array($user_potvrda);
+        $_SESSION['email'] = $email;
+        $_SESSION['id'] = $row['id'];  //user id
+        $_SESSION['tip'] = $row['tip'];
+        if($row['tip'] == 0) //obican korisnik
+            header('location: proizvodi.php'); 
+        else  //admin
+            header('location: admin.php');
+    }
 
-<head>
-    <link rel="shortcut icon" href="img/ikon.png" />
-    <title>Mini IT Shop Store</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
-    <script type="text/javascript" src="bootstrap/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- eksterni css -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-</head>
-
-<body>
-    <div>
-        <?php
-            require 'header.php';
-        ?>
-        <br><br><br>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3>Uloguj se</h3>
-                        </div>
-                        <div class="panel-body">
-                            <p>Uloguj se da bi izvršio kupovinu.</p>
-                            <form method="post" action="login_submit.php">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Email"
-                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" name="password"
-                                        placeholder="Šifra(min. 6 karaktera)" pattern=".{6,}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Login" class="btn btn-primary">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="panel-footer">Još se niste registrovali? <a href="signup.php">Registruj se</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php
-            require 'footer.php';
-        ?>
-    </div>
-</body>
-
-</html>
+?>

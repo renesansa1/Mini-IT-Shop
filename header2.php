@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="korpa.php"><span class="glyphicon glyphicon-shopping-cart"></span> Korpa</a></li>
-                <li><a href="settings.php"><span class="glyphicon glyphicon-cog"></span> Podešavanja</a></li>
+                <li><a href="podesavanja_forma.php"><span class="glyphicon glyphicon-cog"></span> Podešavanja</a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Izloguj se</a></li>
             </ul>
         </div>

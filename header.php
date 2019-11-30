@@ -27,9 +27,9 @@
                 }
                 ?>
                 <?php
-                if(isset($_SESSION['tip'])==1){?>
-                    <li><a href="admin.php"><span class="glyphicon glyphicon-log-in"></span> Admin</a></li>
-                    <?php
+                if(isset($_SESSION['tip']) and $_SESSION['tip']==1){?>
+                    <li><a href="admin.php"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
+                <?php
                 }
                 ?>
 

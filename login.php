@@ -9,11 +9,7 @@
 <meta http-equiv="refresh" content="2;url=login_forma.php" />
 <?php
     }
-<<<<<<< HEAD
     $user_potvrda_query = "select id, email, tip from korisnici where email='$email' and password='$password'";
-=======
-    $user_potvrda_query = "select id,email from korisnici where email='$email' and password='$password'";
->>>>>>> 8cbbe087cad98040fea673f0d9561469536f5148
     $user_potvrda = $con->query($user_potvrda_query) or die($con->error);
     $broj_usera = mysqli_num_rows($user_potvrda);
     if ($broj_usera == 0) {
@@ -31,15 +27,11 @@
         $row = mysqli_fetch_array($user_potvrda);
         $_SESSION['email'] = $email;
         $_SESSION['id'] = $row['id'];  //user id
-<<<<<<< HEAD
         $_SESSION['tip'] = $row['tip'];
         if($row['tip'] == 0) //obican korisnik
             header('location: proizvodi.php'); 
         else  //admin
             header('location: admin.php');
-=======
-        header('location: proizvodi.php');
->>>>>>> 8cbbe087cad98040fea673f0d9561469536f5148
     }
 
 ?>

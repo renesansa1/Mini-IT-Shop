@@ -46,8 +46,8 @@ if(!isset($_SESSION['email']) || $_SESSION['tip'] != 1){
         echo "<td>$red[ime_proizvoda]</td>";
         echo "<td>".number_format($red['cena'])."</td>";
         echo "<td>$red[opis]</td>";
-        echo "<td><button class='izmeni' data-id='".$red['id']."'>IZMENI</button></td>";
-        echo "<td><button class='delete' data-id='".$red['id']."'>DELETE</button></td>";
+        echo "<td><button class='izmeni btn btn-primary' data-id='".$red['id']."'>IZMENI</button></td>";
+        echo "<td><button class='delete btn btn-danger' data-id='".$red['id']."'>OBRISI</button></td>";
         echo "</tr>";
       
     }
@@ -65,12 +65,12 @@ if(!isset($_SESSION['email']) || $_SESSION['tip'] != 1){
                     <label for="cena">Cena:</label>
                     <input name="cena" required type="number"><br>
                     <label for="opis">Opis:</label>
-                    <input name="opis" required type="text"><br>
+                    <input name="opis" required type="text"><br><br>
                     <label for="slika">Slika:</label>
                     <input name="slika" type="file"><br>
-                    <input type="submit" value="Sacuvaj" class="submit" name="dodaj_proizvod"></input>
+                    <input type="submit" value="Sacuvaj" class="submit btn btn-success" name="dodaj_proizvod"></input>
                 </form>
-                <button id="reset">RESET</button>
+                <button id="reset" class="btn btn-primary">RESET</button>
             </div>
         </div>
         <script>
@@ -108,22 +108,24 @@ if(!isset($_SESSION['email']) || $_SESSION['tip'] != 1){
             btn.onclick = function() {
                 let id = this.getAttribute('data-id');
                 fetch("izmena.php?daj_1=" + id)
-                    .then(resp => resp.json())
+                    .then(resp => resp.text())
                     .then(json => {
+                        console.log(json);
+                        document.querySelector("form[method='POST']").action = 'izmena.php';
                         document.querySelector("input[name='id']").value = id;
                         document.querySelector("input[name='tip_proizvoda']").value = json.tip_proizvoda;
                         document.querySelector("input[name='ime_proizvoda']").value = json.ime_proizvoda;
                         document.querySelector("input[name='cena']").value = json.cena;
                         document.querySelector("input[name='opis']").value = json.opis;
                         //document.querySelector("input[name='slika']").value = json.slika;
-
                         document.querySelector("input[type='submit']").name = "izmeni_proizvod";
                         document.querySelector(".insert h1").innerHTML = "Izmeni proizvod " + id;
+                        
                     });
             }
         }
         </script>
-        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
         <?php
             require 'footer.php';
         ?>

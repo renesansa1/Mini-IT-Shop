@@ -20,7 +20,7 @@ session_start();
 				if(move_uploaded_file($tmp_file, $lokacija)){
 					$con->query("INSERT INTO proizvodi VALUES('','$tip_proizvoda', '$ime_proizvoda', '$cena', '$opis', '$nova_lokacija')");
 					echo "<script>alert('Podaci ubaceni')</script>";
-					echo "<script>window.location = 'index.php'</script>";
+					echo "<script>window.location = 'admin.php'</script>";
 				}
  
 			}else{

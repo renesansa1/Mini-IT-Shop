@@ -133,3 +133,8 @@ form input {
 .submit {
   margin-left: 150px;
 }
+
+#reset{
+  float: right;
+  margin-right: 80px;
+}

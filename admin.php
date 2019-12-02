@@ -30,7 +30,7 @@ if(!isset($_SESSION['email']) || $_SESSION['tip'] != 1){
 
 
         <?php
-    echo "<h1>Svi proizvodi</h1>";
+    echo "<h1 class='naslov_admin'>Svi proizvodi</h1>";
     echo "<table>";
     echo "<tr>";
         echo "<th>Tip</th>";

@@ -1,1 +1,4 @@
 # Mini-IT-Shop
+Mini IT Shop je mala internet prodavnica kompjuterskih komponenti, monitora i ulaznih uredjaja. Zove se mini iz razloga sto je broj proizvoda ogranicen i sto je dostupan samo po jedan komad od svakog proizvoda za jednu kupovinu.
+Za funkcionalnost internet prodavnice koriscene su front-end i back-end tehnologije, tj HTML, javascript, css, PHP Mysql kao i bootstrap za lepsi vizuelni dozivljaj. Podaci o proizvodima nalaze se u bazi podataka odakle krajnji korisnik dobija potrebne informacije. Izmenu podataka proizvoda sa sajta moze vrsiti samo administrator koji to pravo dobija kada se uloguje sa svojim username/sifrom. Otvara se novi panel gde administrator moze izmeniti, obrisati postojeci ili dodati novi proizvod.
+Korisnici mogu iskljucivo uzivati u kupovini a ako zele mogu i promeniti svoju trenutnu lozinku.

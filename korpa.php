@@ -5,7 +5,7 @@
         header('location: login_forma.php');
     }
     $user_id = $_SESSION['id'];
-    $user_proizvod_query = "select proizvodi.id, proizvodi.ime_proizvoda, proizvodi.cena from korisnicka_korpa inner join proizvodi on proizvodi.id = korisnicka_korpa.proizvod_id where korisnicka_korpa.user_id = '$user_id'";
+    $user_proizvod_query = "select proizvodi.id, proizvodi.ime_proizvoda, proizvodi.cena from korisnicka_korpa inner join proizvodi on proizvodi.id = korisnicka_korpa.proizvod_id where korisnicka_korpa.user_id = '$user_id' and status<>'Kupljeno'";
     $user_proizvod = $con->query($user_proizvod_query) or die($con->error);
     $broj_kor_proiz = mysqli_num_rows($user_proizvod);
     $sum = 0;

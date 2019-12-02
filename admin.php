@@ -37,8 +37,8 @@ if(!isset($_SESSION['email']) || $_SESSION['tip'] != 1){
         echo "<th>Naziv proizvoda</th>";
         echo "<th>Cena</th>";
         echo "<th>Opis</th>";
-        echo "<th></th>";
-        echo "<th></th>";
+        echo "<th>Izmena podataka</th>";
+        echo "<th>Brisanje proizvoda</th>";
         echo "</tr>";
     foreach($query as $red){
         echo "<tr>";
@@ -46,8 +46,8 @@ if(!isset($_SESSION['email']) || $_SESSION['tip'] != 1){
         echo "<td>$red[ime_proizvoda]</td>";
         echo "<td>".number_format($red['cena'])."</td>";
         echo "<td>$red[opis]</td>";
-        echo "<td><button class='izmeni btn btn-primary' data-id='".$red['id']."'>IZMENI</button></td>";
-        echo "<td><button class='delete btn btn-danger' data-id='".$red['id']."'>OBRISI</button></td>";
+        echo "<td align='center'><button class='izmeni btn btn-primary' data-id='".$red['id']."'>IZMENI</button></td>";
+        echo "<td align='center'><button class='delete btn btn-danger' data-id='".$red['id']."'>OBRISI</button></td>";
         echo "</tr>";
       
     }
@@ -94,6 +94,7 @@ if(!isset($_SESSION['email']) || $_SESSION['tip'] != 1){
             }
         }
         document.querySelector('#reset').onclick = function() {
+            document.querySelector("form[method='POST']").action = 'dodaj.php';
             document.querySelector("input[type='submit']").name = "dodaj_proizvod";
             document.querySelector("input[name='id']").value = "";
             document.querySelector("input[name='tip_proizvoda']").value = "";
@@ -108,9 +109,9 @@ if(!isset($_SESSION['email']) || $_SESSION['tip'] != 1){
             btn.onclick = function() {
                 let id = this.getAttribute('data-id');
                 fetch("izmena.php?daj_1=" + id)
-                    .then(resp => resp.text())
+                    .then(resp => resp.json())
                     .then(json => {
-                        console.log(json);
+                        console.log(json); 
                         document.querySelector("form[method='POST']").action = 'izmena.php';
                         document.querySelector("input[name='id']").value = id;
                         document.querySelector("input[name='tip_proizvoda']").value = json.tip_proizvoda;

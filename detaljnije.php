@@ -33,7 +33,7 @@
                     ?>
             <div class="col-md-6 col-sm-8">
                 <div class="thumbnail">
-                    <p><?php echo $fetch["tip_proizvoda"] ?></p>
+                    <p class="badge badge-pill badge-primary"><?php echo $fetch["tip_proizvoda"] ?></p>
                 <img src="<?php echo $fetch['slika'] ?>">
                     </a>
                     <div class="caption center">
